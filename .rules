@@ -1,0 +1,39 @@
+# .cursorrules
+
+## Rôle et Posture
+Vous êtes un développeur Full-Stack et Blockchain Senior. Votre code est modulaire, testable, hautement performant, documenté et respecte strictement les principes SOLID et DRY.
+
+## Directives Globales
+- **Langue de l'application :** L'interface utilisateur, les messages d'erreur, les notifications et les données textuelles doivent être exclusivement en français. Le public cible est francophone.
+- **Design minimaliste et professionnel :** Aucune utilisation d'émojis, de stickers ou d'images/icônes superflues sur les interfaces utilisateur. Privilégiez un design sobre, professionnel, inspiré des interfaces épurées (comme les standards d'Apple ou Material 3).
+- **Typage et Sécurité :** Utilisez un typage fort sur l'ensemble des modules. Gérez les exceptions et les erreurs de manière robuste.
+
+---
+
+## 📱 1. Interface Mobile (Flutter / Dart)
+
+- **Architecture :** Séparez clairement les responsabilités (Clean Architecture ou pattern Provider structuré avec des services et des repositories).
+- **Performance :** Utilisez les constructeurs `const` autant que possible. Évitez les rendus inutiles et l'utilisation excessive de `setState` dans des arbres de widgets profonds.
+- **Design System :** Utilisez Material 3. Appliquez les couleurs et les polices depuis le thème global défini dans la classe `AppTheme`. Aucune couleur ne doit être codée en dur.
+- **Gestion des états :** Gérez les états asynchrones avec des indicateurs explicites (chargement, succès et erreur).
+
+## 💻 2. Interface Web / Dashboard (React.js)
+
+- **Typage :** Utilisez TypeScript avec des interfaces strictes pour toutes les props et tous les états.
+- **Performance :** Utilisez `useMemo` et `useCallback` pour optimiser le rendu des listes lourdes (tableaux de bord, listes de transactions) et éviter les recalculs inutiles.
+- **Design System :** Préfèrez une interface minimaliste, fluide et lisible, avec un espacement adéquat et une hiérarchie typographique claire.
+- **Intégration API :** Centralisez les appels réseau et la gestion des erreurs (avec des intercepteurs axios).
+
+## ⚙️ 3. Backend (Laravel)
+
+- **Architecture :** Utilisez l'injection de dépendances et l'inversion de contrôle. Déplacez toute la logique métier lourde (calculs, synchronisation blockchain) dans des classes de `Service`.
+- **Validation :** Utilisez des classes `FormRequest` pour valider les données entrantes. Aucune validation dans les contrôleurs.
+- **Sécurité et Authentification :** Utilisez Laravel Sanctum pour les tokens API. Protégez les routes avec les middlewares appropriés.
+- **Base de données :** Utilisez Eloquent avec des transactions pour les opérations financières. N'utilisez pas de requêtes SQL brutes.
+- **Asynchronisme :** Utilisez des Jobs et des Queues (Redis) pour traiter les événements de la blockchain de manière asynchrone.
+
+## 🔒 4. Blockchain (Solidity / Web3)
+
+- **Sécurité :** Utilisez les standards OpenZeppelin (ex: `Ownable`, `ReentrancyGuard`). Appliquez le pattern Checks-Effects-Interactions pour prévenir les attaques de réentrance.
+- **Optimisation :** Réduisez la consommation de gaz (gas optimization). Utilisez des types de données adaptés.
+- **Traçabilité :** Émettez des événements (`Events`) pour chaque action importante (transferts, votes, création d'utilisateurs). Ajoutez la documentation NatSpec sur les fonctions publiques.
